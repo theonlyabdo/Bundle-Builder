@@ -28,7 +28,7 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
-// Full bundle (steps, review-only items, meta) — what the frontend consumes.
+// Full bundle (steps, review-only items, meta)
 app.get("/api/bundle", async (_req, res) => {
   try {
     const data = await loadData();
@@ -39,7 +39,7 @@ app.get("/api/bundle", async (_req, res) => {
   }
 });
 
-// Convenience sub-routes, in case a consumer only wants one slice.
+// Convenience crud apis routes, in case a consumer only wants one slice (for future use).
 app.get("/api/bundle/steps", async (_req, res) => {
   const data = await loadData();
   res.json(data.steps);
