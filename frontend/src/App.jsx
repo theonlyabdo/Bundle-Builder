@@ -1,57 +1,35 @@
-import { useState } from "react";
-import bundleData from "./data/bundle-data.json";
+import { useBundleState } from "./hooks/useBundleState";
 import BuilderStep from "./components/BuilderStep";
+import ReviewPanel from "./components/ReviewPanel";
 
 export default function App() {
-  const { steps } = bundleData;
+  const {
+    isLoading,
+    steps,
+    meta,
+    quantities,
+    activeVariant,
+    openStep,
+    justSaved,
+    selectedCountByStep,
+    reviewGroups,
+    totals,
+    setQuantity,
+    selectVariant,
+    toggleStep,
+    goToNextStep,
+    handleSave,
+  } = useBundleState();
 
-  const [openStep, setOpenStep] = useState(steps[0].id);
-
-  const [quantities, setQuantities] = useState({});
-  const [activeVariant, setActiveVariant] = useState({});
-
-  const toggleStep = (stepId) => {
-    setOpenStep((current) => (current === stepId ? null : stepId));
-  };
-
-  const selectVariant = (productId, variantId) => {
-    setActiveVariant((prev) => ({
-      ...prev,
-      [productId]: variantId,
-    }));
-  };
-
-  const setQuantity = (variantId, qty) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [variantId]: qty,
-    }));
-  };
-
-  const goToNextStep = (stepId) => {
-    const currentIndex = steps.findIndex((step) => step.id === stepId);
-
-    const nextStep = steps[currentIndex + 1];
-
-    if (nextStep) {
-      setOpenStep(nextStep.id);
-    }
-  };
-
-  const selectedCountByStep = steps.reduce((acc, step) => {
-    acc[step.id] = step.products.reduce((count, product) => {
-      return (
-        count +
-        product.variants.reduce(
-          (sum, variant) =>
-            sum + (quantities[variant.id] || variant.defaultQty || 0),
-          0,
-        )
-      );
-    }, 0);
-
-    return acc;
-  }, {});
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#f7f7fb]">
+        <p className="text-sm font-medium text-ink-500">
+          Loading your security system…
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f7f7fb] px-4 py-8 sm:px-6 lg:px-10">
@@ -60,7 +38,6 @@ export default function App() {
           <h1 className="text-2xl font-bold text-ink-900">
             Build your security system
           </h1>
-
           <p className="mt-1 text-sm text-ink-500">
             Pick the cameras, plan, sensors, and extras that fit your home.
           </p>
@@ -86,7 +63,16 @@ export default function App() {
             ))}
           </div>
 
-          <div className="lg:sticky lg:top-8 lg:self-start">review</div>
+          <div className="lg:sticky lg:top-8 lg:self-start">
+            <ReviewPanel
+              reviewGroups={reviewGroups}
+              totals={totals}
+              meta={meta}
+              onChangeQuantity={setQuantity}
+              onSave={handleSave}
+              justSaved={justSaved}
+            />
+          </div>
         </div>
       </div>
     </div>
