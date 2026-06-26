@@ -35,8 +35,11 @@ export default function App() {
     <div className="min-h-screen bg-[#f7f7fb] px-4 py-8 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[1280px]">
         <header className="mb-6">
-          <h1 className="text-2xl font-bold text-ink-900">
+          <h1 className="text-2xl font-bold text-ink-900 hidden lg:block">
             Build your security system
+          </h1>
+          <h1 className="text-2xl font-bold text-ink-900 lg:hidden">
+            Let's Get Started!
           </h1>
           <p className="mt-1 text-sm text-ink-500">
             Pick the cameras, plan, sensors, and extras that fit your home.
