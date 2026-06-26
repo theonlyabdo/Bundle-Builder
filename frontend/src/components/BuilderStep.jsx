@@ -20,7 +20,7 @@ export default function BuilderStep({
     return (
       <section className="rounded-card bg-surface-panel p-5">
         <h2 className="m-0 mb-4">
-          <span className="block text-[11px] font-semibold uppercase tracking-wide text-ink-400">
+          <span className="block text-[11px] font-semibold uppercase tracking-wide text-ink-400 border-b border-surface-border pb-3">
             Step {step.stepNumber} of 4
           </span>
           <button
@@ -63,7 +63,7 @@ export default function BuilderStep({
               <button
                 type="button"
                 onClick={onNext}
-                className="rounded-pill border border-brand-600 bg-white px-5 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-50"
+                className="rounded-lg border border-brand-600 bg-transparent px-5 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-50"
               >
                 {step.nextLabel}
               </button>
