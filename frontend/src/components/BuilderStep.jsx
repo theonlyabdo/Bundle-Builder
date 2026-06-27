@@ -18,7 +18,7 @@ export default function BuilderStep({
 
   if (isOpen) {
     return (
-      <section className="rounded-card bg-surface-panel p-5">
+      <section className="rounded-card bg-surface-panel p-5 mt-5">
         <h2 className="m-0 mb-4">
           <span className="block text-[11px] font-semibold uppercase tracking-wide text-ink-400 border-b border-surface-border pb-3">
             Step {step.stepNumber} of 4
@@ -35,11 +35,11 @@ export default function BuilderStep({
               <StepIcon name={step.icon} className="text-ink-700" />
               {step.title}
             </span>
-            <span className="flex shrink-0 items-center gap-1.5 text-sm font-semibold text-brand-600">
+            <span className="flex shrink-0 items-center gap-1.5 text-sm font-semibold cursor-pointer text-brand-600">
               <span className="whitespace-nowrap">
                 {selectedCount} selected
               </span>
-              <ChevronIcon open={isOpen} className="text-brand-600" />
+              <ChevronIcon open={isOpen} className="text-brand-600 " />
             </span>
           </button>
         </h2>
@@ -60,7 +60,7 @@ export default function BuilderStep({
           </div>
 
           {!isLast && (
-            <div className="mt-5 flex justify-center">
+            <div className="mt-5 flex flex-col items-center gap-2">
               <button
                 type="button"
                 onClick={onNext}
@@ -68,6 +68,30 @@ export default function BuilderStep({
               >
                 {step.nextLabel}
               </button>
+              {/* 
+                It was not clear to me wither a user should select 
+                before moving forward or he can move freely, so I'll
+                keep this pieace of code here to use it later
+                
+                <button
+                type="button"
+                onClick={onNext}
+                disabled={!selectedCount}
+                className="rounded-lg border border-brand-600 bg-transparent px-5 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {step.nextLabel}
+              </button> 
+              */}
+              {/*
+                however I am keeping this here to ne in the safe side
+                for better UX in my opinion
+              */}
+              {!selectedCount && (
+                <p className="text-xs font-medium text-ink-500">
+                  Please select at least one item before continuing to the next
+                  step.
+                </p>
+              )}
             </div>
           )}
         </div>
@@ -76,9 +100,9 @@ export default function BuilderStep({
   }
 
   return (
-    <section className="border-t border-surface-border">
+    <section className="border-b border-surface-border">
       <h2 className="m-0">
-        <span className="block px-1 pt-3 text-[11px] font-semibold uppercase tracking-wide text-ink-400">
+        <span className="block px-1 border-b border-surface-border mb-1 pt-3 text-[11px] font-semibold uppercase tracking-wide text-ink-400">
           Step {step.stepNumber} of 4
         </span>
         <button
