@@ -4,6 +4,7 @@ import { VariantSelector } from "./VariantSelector";
 import { DiscountBadge } from "./DiscountBadge";
 import { PriceTag } from "./PriceTag";
 import { Check } from "lucide-react";
+import { PlanVisual } from "./PlanVisual";
 
 export function ProductCard({
   product,
@@ -31,7 +32,15 @@ export function ProductCard({
 
       <div className="flex flex-col gap-4 lg:flex-row">
         <div className="flex w-full shrink-0 items-center justify-center lg:w-[88px]">
-          <ProductImage name={product.name} size={80} />
+          {isPlanStep ? (
+            <PlanVisual size={80} />
+          ) : (
+            <ProductImage
+              name={product.name}
+              src={activeVariant.image}
+              size={80}
+            />
+          )}
         </div>
 
         <div className="flex flex-1 flex-col gap-2 pt-1">
@@ -69,11 +78,6 @@ export function ProductCard({
             onChange={(qty) => onChangeQuantity(activeVariant.id, qty)}
           />
         )}
-        <PriceTag
-          price={activeVariant.price}
-          compareAtPrice={product.compareAtPrice}
-          billingSuffix={product.billingSuffix}
-        />
       </div>
       {isPlanStep && (
         <button

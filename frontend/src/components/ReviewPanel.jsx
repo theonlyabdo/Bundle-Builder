@@ -64,7 +64,7 @@ export default function ReviewPanel({
           ))
         ) : (
           <p className="py-6 text-center text-sm text-ink-500">
-            Nothing selected yet — choose products on the left to build your
+            Nothing selected yet. Choose products on the left to build your
             system.
           </p>
         )}

@@ -22,21 +22,24 @@
               "label": "White",
               "swatch": "#f5f5f4",
               "price": 27.98,
-              "defaultQty": 1
+              "defaultQty": 1,
+              "image": "https://www.wyze.com/cdn/shop/files/wyze-cam-v4-wyze-labs-inc-5186547.png?format=pjpg&v=1762447655&width=1346"
             },
             {
               "id": "wyze-cam-v4-grey",
               "label": "Grey",
               "swatch": "#9ca3af",
               "price": 27.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6579/6579818_sd.jpg"
             },
             {
               "id": "wyze-cam-v4-black",
               "label": "Black",
               "swatch": "#27272a",
               "price": 27.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://static.nationalcreditdirect.com/common/images/products/BBY-large_front-64426d73-5b61-40ed-9235-1c40c26e4314.png"
             }
           ]
         },
@@ -54,14 +57,16 @@
               "label": "White",
               "swatch": "#f5f5f4",
               "price": 34.98,
-              "defaultQty": 2
+              "defaultQty": 2,
+              "image": "https://m.media-amazon.com/images/I/51VfHNLKklL._AC_SL1500_.jpg"
             },
             {
               "id": "wyze-cam-pan-v3-black",
               "label": "Black",
               "swatch": "#27272a",
               "price": 34.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://m.media-amazon.com/images/I/51NGuqgWIhL._AC_.jpg"
             }
           ]
         },
@@ -79,14 +84,16 @@
               "label": "White",
               "swatch": "#f5f5f4",
               "price": 69.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://www.wyze.com/cdn/shop/files/wyze-cam-floodlight-v2-wyze-labs-inc-339891.png?format=pjpg&v=1762445396&width=600"
             },
             {
               "id": "wyze-cam-floodlight-v2-black",
               "label": "Black",
               "swatch": "#27272a",
               "price": 69.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://cdn.shopify.com/s/files/1/0285/7700/5701/files/Wyze_Floodlight_v2_Image_0_Black.png?v=1707381497"
             }
           ]
         },
@@ -104,7 +111,8 @@
               "label": null,
               "swatch": null,
               "price": 69.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://m.media-amazon.com/images/I/61YL9fAI6dL._AC_SL1500_.jpg"
             }
           ]
         },
@@ -122,14 +130,16 @@
               "label": "White",
               "swatch": "#f5f5f4",
               "price": 89.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://images.thdstatic.com/productImages/864571f8-7534-44bb-b353-7adbcaee236b/svn/white-wyze-smart-floodlights-wyzecop-64_600.jpg"
             },
             {
               "id": "wyze-battery-cam-pro-black",
               "label": "Black",
               "swatch": "#27272a",
               "price": 89.98,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://images.thdstatic.com/productImages/eab3b2d8-3f43-40a3-a4e2-dca4758d619b/svn/black-wyze-floodlights-wyzecopb-64_600.jpg"
             }
           ]
         }
@@ -224,7 +234,8 @@
               "label": null,
               "swatch": null,
               "price": 29.99,
-              "defaultQty": 2
+              "defaultQty": 2,
+              "image": "https://www.wyze.com/cdn/shop/products/wyze-sense-motion-sensor-wyze-labs-inc-299569.png?v=1750111305&width=1680"
             }
           ]
         },
@@ -242,7 +253,8 @@
               "label": "White",
               "swatch": "#f5f5f4",
               "price": 16.99,
-              "defaultQty": 0
+              "defaultQty": 0,
+              "image": "https://www.wyze.com/cdn/shop/products/WyzeEntrySensorMainPOW.png?v=1654286651"
             },
             {
               "id": "wyze-sense-entry-sensor-black",
@@ -277,7 +289,8 @@
               "label": null,
               "swatch": null,
               "price": 20.98,
-              "defaultQty": 2
+              "defaultQty": 2,
+              "image": "https://www.wyze.com/cdn/shop/products/Wyze32gbSDCardMain-01.jpg?v=1675202741&width=2890"
             }
           ]
         },

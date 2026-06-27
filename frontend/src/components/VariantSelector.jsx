@@ -1,8 +1,14 @@
+import { ProductImage } from "./ProductImage";
+
 export function VariantSelector({ variants, activeVariantId, onSelect }) {
   if (!variants || variants.length <= 1) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-1.5" role="radiogroup" aria-label="Color">
+    <div
+      className="flex flex-wrap items-center gap-1.5"
+      role="radiogroup"
+      aria-label="Color"
+    >
       {variants.map((variant) => {
         const isActive = variant.id === activeVariantId;
         return (
@@ -18,10 +24,13 @@ export function VariantSelector({ variants, activeVariantId, onSelect }) {
                 : "border-surface-border hover:border-ink-300"
             }`}
           >
-            <span
-              className="flex h-4 w-4 items-center justify-center rounded-sm border border-black/10"
-              style={{ backgroundColor: variant.swatch ?? "#d4d4d8" }}
-              aria-hidden="true"
+            <ProductImage
+              name={variant.label ?? "Variant"}
+              src={variant.image}
+              size={16}
+              rounded="rounded-sm"
+              fallbackColor={variant.swatch ?? "#d4d4d8"}
+              showInitials={false}
             />
             {variant.label}
           </button>

@@ -5,8 +5,15 @@ import { PriceTag } from "./PriceTag";
 export function ReviewLine({ line, onChangeQuantity }) {
   return (
     <div className="flex items-center gap-2.5 py-2">
-      <ProductImage name={line.name} size={32} rounded="rounded-md" />
-      <span className="flex-1 text-sm leading-snug text-ink-900">{line.name}</span>
+      <ProductImage
+        name={line.name}
+        src={line.image}
+        size={32}
+        rounded="rounded-md"
+      />
+      <span className="flex-1 text-sm leading-snug text-ink-900">
+        {line.name}
+      </span>
       <QuantityStepper
         size="sm"
         quantity={line.qty}

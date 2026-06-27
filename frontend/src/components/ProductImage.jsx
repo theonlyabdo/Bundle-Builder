@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 // Deterministic pastel color from a string, so each product gets a stable
 // but distinct placeholder tile instead of random colors on every render.
-// to be handled later by the backend in a real app, but this is a fun demo.
 function colorFromString(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i += 1) {
@@ -22,23 +23,46 @@ function initials(name) {
 
 export function ProductImage({
   name,
+  src,
   size = 64,
   className = "",
   rounded = "rounded-lg",
+  fallbackColor,
+  showInitials = true,
 }) {
-  const bg = colorFromString(name);
-  return (
-    <div
-      className={`flex items-center justify-center shrink-0 ${rounded} ${className}`}
-      style={{ backgroundColor: bg, width: size, height: size }}
-      aria-hidden="true"
-    >
-      <span
-        className="font-semibold text-ink-700/50"
-        style={{ fontSize: Math.max(11, size * 0.28) }}
+  const [failed, setFailed] = useState(false);
+  const showPlaceholder = !src || failed;
+
+  if (showPlaceholder) {
+    const bg = fallbackColor ?? colorFromString(name);
+    return (
+      <div
+        className={`flex items-center justify-center shrink-0 ${rounded} ${className}`}
+        style={{ backgroundColor: bg, width: size, height: size }}
+        aria-hidden="true"
       >
-        {initials(name)}
-      </span>
-    </div>
+        {showInitials && (
+          <span
+            className="font-semibold text-ink-700/50"
+            style={{ fontSize: Math.max(11, size * 0.28) }}
+          >
+            {initials(name)}
+          </span>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={name}
+      width={size}
+      height={size}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={`shrink-0 object-contain ${rounded} ${className}`}
+      style={{ width: size, height: size }}
+    />
   );
 }

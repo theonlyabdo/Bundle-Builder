@@ -219,7 +219,7 @@ export function useBundleState() {
           pushLine(meta.categoryLabels[step.id] || step.id, {
             variantId: variant.id,
             name,
-            image: product.image,
+            image: variant.image ?? product.image ?? null,
             qty,
             price: variant.price,
             compareAtPrice: product.compareAtPrice,
@@ -236,7 +236,7 @@ export function useBundleState() {
       pushLine(meta.categoryLabels[item.category] || item.category, {
         variantId: item.id,
         name: item.name,
-        image: item.image,
+        image: variant.image ?? product.image ?? null,
         qty,
         price: item.price,
         priceLabel: item.priceLabel,
