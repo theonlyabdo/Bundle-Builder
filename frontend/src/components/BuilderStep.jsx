@@ -45,7 +45,7 @@ export default function BuilderStep({
         </h2>
 
         <div id={panelId} role="region" aria-labelledby={headerId}>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-5 lg:grid-cols-2">
             {step.products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -54,6 +54,7 @@ export default function BuilderStep({
                 activeVariantId={activeVariant[product.id]}
                 onSelectVariant={onSelectVariant}
                 onChangeQuantity={onChangeQuantity}
+                isPlanStep={step.id === "plan"}
               />
             ))}
           </div>

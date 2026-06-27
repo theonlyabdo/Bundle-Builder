@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { loadBundleData } from "../api/bundleApi";
-import { loadSavedSystem, saveSystem, clearSavedSystem } from "../utils/persistence";
+import {
+  loadSavedSystem,
+  saveSystem,
+  clearSavedSystem,
+} from "../utils/persistence";
 import { round2 } from "../utils/pricing";
 
 // Flatten every variant across every product into a lookup table, tagged
@@ -46,10 +50,10 @@ function buildDefaultQuantities(steps, reviewOnlyItems) {
     .flatMap((s) => s.products)
     .flatMap((p) => p.variants)
     .forEach((variant) => {
-      qty[variant.id] = variant.defaultQty ?? 0;
+      qty[variant.id] = 0;
     });
   reviewOnlyItems.forEach((item) => {
-    qty[item.id] = item.defaultQty ?? 0;
+    qty[item.id] = 0;
   });
   return qty;
 }
@@ -61,7 +65,7 @@ function buildDefaultActiveVariants(steps) {
       // Prefer the variant with the highest default quantity as the
       // initially active one, falling back to the first variant.
       const sorted = [...product.variants].sort(
-        (a, b) => (b.defaultQty || 0) - (a.defaultQty || 0)
+        (a, b) => (b.defaultQty || 0) - (a.defaultQty || 0),
       );
       active[product.id] = sorted[0]?.id ?? product.variants[0]?.id;
     });
@@ -103,7 +107,7 @@ export function useBundleState() {
 
   const variantIndex = useMemo(
     () => (bundle ? buildVariantIndex(steps, reviewOnlyItems, meta) : {}),
-    [bundle, steps, reviewOnlyItems, meta]
+    [bundle, steps, reviewOnlyItems, meta],
   );
 
   const [quantities, setQuantities] = useState(null);
@@ -115,18 +119,42 @@ export function useBundleState() {
   // useState-init time since the data arrives asynchronously).
   useEffect(() => {
     if (!bundle || quantities !== null) return;
-    setQuantities(saved?.quantities ?? buildDefaultQuantities(steps, reviewOnlyItems));
+    setQuantities(
+      saved?.quantities ?? buildDefaultQuantities(steps, reviewOnlyItems),
+    );
     setActiveVariant(saved?.activeVariant ?? buildDefaultActiveVariants(steps));
     setOpenStep(saved?.openStep ?? steps[0]?.id ?? null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundle]);
 
-  const setQuantity = useCallback((variantId, nextQty) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [variantId]: Math.max(0, nextQty),
-    }));
-  }, []);
+  const setQuantity = useCallback(
+    (variantId, nextQty) => {
+      const safeQty = Math.max(0, nextQty);
+
+      setQuantities((prev) => {
+        const next = { ...prev, [variantId]: safeQty };
+
+        // Enforce single-plan selection: setting any plan variant > 0
+        // zeroes out every other variant in the "plan" step.
+        if (safeQty > 0) {
+          const planStep = steps.find((s) => s.id === "plan");
+          const isPlanVariant = planStep?.products.some((p) =>
+            p.variants.some((v) => v.id === variantId),
+          );
+          if (isPlanVariant) {
+            planStep.products
+              .flatMap((p) => p.variants)
+              .forEach((v) => {
+                if (v.id !== variantId) next[v.id] = 0;
+              });
+          }
+        }
+
+        return next;
+      });
+    },
+    [steps],
+  );
 
   const incrementVariant = useCallback((variantId, delta) => {
     setQuantities((prev) => ({
@@ -149,7 +177,7 @@ export function useBundleState() {
       const next = steps[idx + 1];
       setOpenStep(next ? next.id : null);
     },
-    [steps]
+    [steps],
   );
 
   // --- Derived data -------------------------------------------------------
@@ -160,7 +188,7 @@ export function useBundleState() {
     if (!quantities) return counts;
     steps.forEach((step) => {
       counts[step.id] = step.products.filter((product) =>
-        product.variants.some((v) => (quantities[v.id] ?? 0) > 0)
+        product.variants.some((v) => (quantities[v.id] ?? 0) > 0),
       ).length;
     });
     return counts;

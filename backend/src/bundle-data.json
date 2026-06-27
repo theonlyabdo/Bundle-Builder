@@ -17,9 +17,27 @@
           "image": "placeholder",
           "compareAtPrice": 35.98,
           "variants": [
-            { "id": "wyze-cam-v4-white", "label": "White", "swatch": "#f5f5f4", "price": 27.98, "defaultQty": 1 },
-            { "id": "wyze-cam-v4-grey", "label": "Grey", "swatch": "#9ca3af", "price": 27.98, "defaultQty": 0 },
-            { "id": "wyze-cam-v4-black", "label": "Black", "swatch": "#27272a", "price": 27.98, "defaultQty": 0 }
+            {
+              "id": "wyze-cam-v4-white",
+              "label": "White",
+              "swatch": "#f5f5f4",
+              "price": 27.98,
+              "defaultQty": 1
+            },
+            {
+              "id": "wyze-cam-v4-grey",
+              "label": "Grey",
+              "swatch": "#9ca3af",
+              "price": 27.98,
+              "defaultQty": 0
+            },
+            {
+              "id": "wyze-cam-v4-black",
+              "label": "Black",
+              "swatch": "#27272a",
+              "price": 27.98,
+              "defaultQty": 0
+            }
           ]
         },
         {
@@ -31,8 +49,20 @@
           "image": "placeholder",
           "compareAtPrice": 39.98,
           "variants": [
-            { "id": "wyze-cam-pan-v3-white", "label": "White", "swatch": "#f5f5f4", "price": 34.98, "defaultQty": 2 },
-            { "id": "wyze-cam-pan-v3-black", "label": "Black", "swatch": "#27272a", "price": 34.98, "defaultQty": 0 }
+            {
+              "id": "wyze-cam-pan-v3-white",
+              "label": "White",
+              "swatch": "#f5f5f4",
+              "price": 34.98,
+              "defaultQty": 2
+            },
+            {
+              "id": "wyze-cam-pan-v3-black",
+              "label": "Black",
+              "swatch": "#27272a",
+              "price": 34.98,
+              "defaultQty": 0
+            }
           ]
         },
         {
@@ -44,8 +74,20 @@
           "image": "placeholder",
           "compareAtPrice": 89.98,
           "variants": [
-            { "id": "wyze-cam-floodlight-v2-white", "label": "White", "swatch": "#f5f5f4", "price": 69.98, "defaultQty": 0 },
-            { "id": "wyze-cam-floodlight-v2-black", "label": "Black", "swatch": "#27272a", "price": 69.98, "defaultQty": 0 }
+            {
+              "id": "wyze-cam-floodlight-v2-white",
+              "label": "White",
+              "swatch": "#f5f5f4",
+              "price": 69.98,
+              "defaultQty": 0
+            },
+            {
+              "id": "wyze-cam-floodlight-v2-black",
+              "label": "Black",
+              "swatch": "#27272a",
+              "price": 69.98,
+              "defaultQty": 0
+            }
           ]
         },
         {
@@ -57,7 +99,13 @@
           "image": "placeholder",
           "compareAtPrice": null,
           "variants": [
-            { "id": "wyze-duo-cam-doorbell-default", "label": null, "swatch": null, "price": 69.98, "defaultQty": 0 }
+            {
+              "id": "wyze-duo-cam-doorbell-default",
+              "label": null,
+              "swatch": null,
+              "price": 69.98,
+              "defaultQty": 0
+            }
           ]
         },
         {
@@ -69,8 +117,20 @@
           "image": "placeholder",
           "compareAtPrice": null,
           "variants": [
-            { "id": "wyze-battery-cam-pro-white", "label": "White", "swatch": "#f5f5f4", "price": 89.98, "defaultQty": 0 },
-            { "id": "wyze-battery-cam-pro-black", "label": "Black", "swatch": "#27272a", "price": 89.98, "defaultQty": 0 }
+            {
+              "id": "wyze-battery-cam-pro-white",
+              "label": "White",
+              "swatch": "#f5f5f4",
+              "price": 89.98,
+              "defaultQty": 0
+            },
+            {
+              "id": "wyze-battery-cam-pro-black",
+              "label": "Black",
+              "swatch": "#27272a",
+              "price": 89.98,
+              "defaultQty": 0
+            }
           ]
         }
       ]
@@ -93,7 +153,13 @@
           "compareAtPrice": 12.99,
           "billingSuffix": "/mo",
           "variants": [
-            { "id": "cam-unlimited-default", "label": null, "swatch": null, "price": 9.99, "defaultQty": 1 }
+            {
+              "id": "cam-unlimited-default",
+              "label": null,
+              "swatch": null,
+              "price": 9.99,
+              "defaultQty": 1
+            }
           ]
         },
         {
@@ -106,7 +172,32 @@
           "compareAtPrice": null,
           "billingSuffix": "/mo",
           "variants": [
-            { "id": "cam-protect-basic-default", "label": null, "swatch": null, "price": 2.99, "defaultQty": 0 }
+            {
+              "id": "cam-protect-basic-default",
+              "label": null,
+              "swatch": null,
+              "price": 2.99,
+              "defaultQty": 0
+            }
+          ]
+        },
+        {
+          "id": "cam-protect-plus",
+          "name": "Cam Protect Plus",
+          "description": "30-day rolling history across every camera, with person detection included. (backend)",
+          "learnMoreUrl": "#",
+          "badge": "Save 15%",
+          "image": "placeholder",
+          "compareAtPrice": 7.99,
+          "billingSuffix": "/mo",
+          "variants": [
+            {
+              "id": "cam-protect-plus-default",
+              "label": null,
+              "swatch": null,
+              "price": 6.79,
+              "defaultQty": 0
+            }
           ]
         }
       ]
@@ -128,7 +219,13 @@
           "image": "placeholder",
           "compareAtPrice": null,
           "variants": [
-            { "id": "wyze-sense-motion-sensor-default", "label": null, "swatch": null, "price": 29.99, "defaultQty": 2 }
+            {
+              "id": "wyze-sense-motion-sensor-default",
+              "label": null,
+              "swatch": null,
+              "price": 29.99,
+              "defaultQty": 2
+            }
           ]
         },
         {
@@ -140,8 +237,20 @@
           "image": "placeholder",
           "compareAtPrice": 19.99,
           "variants": [
-            { "id": "wyze-sense-entry-sensor-white", "label": "White", "swatch": "#f5f5f4", "price": 16.99, "defaultQty": 0 },
-            { "id": "wyze-sense-entry-sensor-black", "label": "Black", "swatch": "#27272a", "price": 16.99, "defaultQty": 0 }
+            {
+              "id": "wyze-sense-entry-sensor-white",
+              "label": "White",
+              "swatch": "#f5f5f4",
+              "price": 16.99,
+              "defaultQty": 0
+            },
+            {
+              "id": "wyze-sense-entry-sensor-black",
+              "label": "Black",
+              "swatch": "#27272a",
+              "price": 16.99,
+              "defaultQty": 0
+            }
           ]
         }
       ]
@@ -163,7 +272,13 @@
           "image": "placeholder",
           "compareAtPrice": null,
           "variants": [
-            { "id": "wyze-microsd-card-default", "label": null, "swatch": null, "price": 20.98, "defaultQty": 2 }
+            {
+              "id": "wyze-microsd-card-default",
+              "label": null,
+              "swatch": null,
+              "price": 20.98,
+              "defaultQty": 2
+            }
           ]
         },
         {
@@ -175,7 +290,13 @@
           "image": "placeholder",
           "compareAtPrice": null,
           "variants": [
-            { "id": "wyze-extended-warranty-default", "label": null, "swatch": null, "price": 39.99, "defaultQty": 0 }
+            {
+              "id": "wyze-extended-warranty-default",
+              "label": null,
+              "swatch": null,
+              "price": 39.99,
+              "defaultQty": 0
+            }
           ]
         }
       ]

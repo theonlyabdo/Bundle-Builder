@@ -3,6 +3,7 @@ import { QuantityStepper } from "./QuantityStepper";
 import { VariantSelector } from "./VariantSelector";
 import { DiscountBadge } from "./DiscountBadge";
 import { PriceTag } from "./PriceTag";
+import { Check } from "lucide-react";
 
 export function ProductCard({
   product,
@@ -10,6 +11,7 @@ export function ProductCard({
   activeVariantId,
   onSelectVariant,
   onChangeQuantity,
+  isPlanStep = false,
 }) {
   const activeVariant =
     product.variants.find((v) => v.id === activeVariantId) ??
@@ -19,7 +21,7 @@ export function ProductCard({
 
   return (
     <div
-      className={`relative flex flex-col rounded-card border bg-white p-4 shadow-card transition ${
+      className={`relative flex h-full flex-col rounded-card border bg-white p-4 shadow-card transition ${
         isSelected
           ? "border-brand-600 ring-1 ring-brand-600"
           : "border-surface-border"
@@ -59,18 +61,37 @@ export function ProductCard({
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-3">
-        <QuantityStepper
-          quantity={activeQty}
-          label={product.name}
-          onChange={(qty) => onChangeQuantity(activeVariant.id, qty)}
-        />
+      <div className="mt-auto flex items-center justify-between gap-3 pt-3">
+        {!isPlanStep && (
+          <QuantityStepper
+            quantity={activeQty}
+            label={product.name}
+            onChange={(qty) => onChangeQuantity(activeVariant.id, qty)}
+          />
+        )}
         <PriceTag
           price={activeVariant.price}
           compareAtPrice={product.compareAtPrice}
           billingSuffix={product.billingSuffix}
         />
       </div>
+      {isPlanStep && (
+        <button
+          type="button"
+          onClick={() => onChangeQuantity(activeVariant.id, isSelected ? 0 : 1)}
+          aria-pressed={isSelected}
+          className={`mt-5 flex w-full items-center justify-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-semibold transition ${
+            isSelected
+              ? "border-brand-600 bg-brand-600 text-white"
+              : "border-surface-border bg-white text-ink-700 hover:border-brand-400 hover:text-brand-600"
+          }`}
+        >
+          {isSelected && (
+            <Check size={14} strokeWidth={2.5} aria-hidden="true" />
+          )}
+          {isSelected ? "Selected" : "Select plan"}
+        </button>
+      )}
     </div>
   );
 }

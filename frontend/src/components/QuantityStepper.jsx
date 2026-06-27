@@ -1,9 +1,16 @@
 import { MinusIcon, PlusIcon } from "./icons";
 
-export function QuantityStepper({ quantity, onChange, size = "md", label, muted = false }) {
+export function QuantityStepper({
+  quantity,
+  onChange,
+  size = "md",
+  label,
+  muted = false,
+}) {
   const isCompact = size === "sm";
-  const btnSize = isCompact ? "w-6 h-6" : "w-7 h-7";
-  const textSize = isCompact ? "text-sm" : "text-base";
+  const btnSize = isCompact ? "w-5 h-5" : "w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7";
+  const textSize = isCompact ? "text-sm" : "text-sm lg:text-base";
+  const gap = isCompact ? "gap-1.5" : "gap-1 lg:gap-1.5";
 
   const decrement = () => onChange(Math.max(0, quantity - 1));
   const increment = () => onChange(quantity + 1);
@@ -15,7 +22,7 @@ export function QuantityStepper({ quantity, onChange, size = "md", label, muted 
 
   return (
     <div
-      className="inline-flex items-center gap-1.5 select-none"
+      className={`inline-flex items-center ${gap} select-none`}
       role="group"
       aria-label={label ? `Quantity for ${label}` : "Quantity"}
     >
@@ -28,7 +35,9 @@ export function QuantityStepper({ quantity, onChange, size = "md", label, muted 
       >
         <MinusIcon />
       </button>
-      <span className={`${textSize} w-4 text-center font-semibold tabular-nums text-ink-900`}>
+      <span
+        className={`${textSize} w-4 text-center font-semibold tabular-nums text-ink-900`}
+      >
         {quantity}
       </span>
       <button

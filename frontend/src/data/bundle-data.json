@@ -180,6 +180,25 @@
               "defaultQty": 0
             }
           ]
+        },
+        {
+          "id": "cam-protect-plus",
+          "name": "Cam Protect Plus",
+          "description": "30-day rolling history for up to 4 cameras. Great for full coverage. (frontend)",
+          "learnMoreUrl": "#",
+          "badge": null,
+          "image": "placeholder",
+          "compareAtPrice": null,
+          "billingSuffix": "/mo",
+          "variants": [
+            {
+              "id": "cam-protect-plus-default",
+              "label": null,
+              "swatch": null,
+              "price": 5.99,
+              "defaultQty": 0
+            }
+          ]
         }
       ]
     },

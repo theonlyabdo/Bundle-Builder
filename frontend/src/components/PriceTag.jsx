@@ -11,8 +11,18 @@ export function PriceTag({
 }) {
   const showCompare = compareAtPrice != null && compareAtPrice > price;
   const priceText = priceLabel ?? formatPrice(price);
-  const priceSize = size === "sm" ? "text-sm" : "text-base";
-  const compareSize = size === "sm" ? "text-xs" : "text-sm";
+
+  const isCardSize = size !== "sm";
+  const priceSize = isCardSize
+    ? variant === "card"
+      ? "text-sm lg:text-base"
+      : "text-base"
+    : "text-sm";
+  const compareSize = isCardSize
+    ? variant === "card"
+      ? "text-xs lg:text-sm"
+      : "text-sm"
+    : "text-xs";
 
   const compareColor = variant === "review" ? "text-ink-400" : "text-sale";
   const priceColor = variant === "review" ? "text-brand-600" : "text-ink-900";
