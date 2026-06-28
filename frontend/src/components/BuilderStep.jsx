@@ -117,7 +117,7 @@ export default function BuilderStep({
             <StepIcon name={step.icon} className="text-ink-700" />
             {step.title}
           </span>
-          <ChevronIcon open={isOpen} className="shrink-0 text-ink-400" />
+          <ChevronIcon open={isOpen} className="shrink-0 text-brand-600" />
         </button>
       </h2>
     </section>
